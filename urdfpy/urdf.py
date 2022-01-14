@@ -3542,7 +3542,7 @@ class URDF(URDFType):
 
             time.sleep(1.0 / fps)
 
-    def show(self, cfg=None, use_collision=False, viewer_flags=None):
+    def show(self, cfg=None, use_collision=False, viewer_flags=None, render_flags=None):
         """Visualize the URDF in a given configuration.
 
         Parameters
@@ -3569,7 +3569,7 @@ class URDF(URDFType):
             pose = fk[tm]
             mesh = pyrender.Mesh.from_trimesh(tm, smooth=False)
             scene.add(mesh, pose=pose)
-        pyrender.Viewer(scene, use_raymond_lighting=True, viewer_flags=viewer_flags)
+        pyrender.Viewer(scene, use_raymond_lighting=True, viewer_flags=viewer_flags, render_flags=render_flags)
 
     def copy(self, name=None, prefix='', scale=None, collision_only=False):
         """Make a deep copy of the URDF.
